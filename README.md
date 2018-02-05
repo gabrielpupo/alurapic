@@ -1,3 +1,3 @@
-# Alurapic
+"# alurapic" 
 
-Projeto em andamento
+repositorio da aplicação alurapic do curso de angularjs 1 da alura
