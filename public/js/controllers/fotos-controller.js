@@ -1,8 +1,13 @@
-angular.module('alurapic').controller('FotosController', function($scope) {
+angular.module('alurapic').controller('FotosController', function($scope, $http) {
 
-    $scope.foto = {
-        url : "http://www.fundosanimais.com/Minis/leoes.jpg",
-        titulo : "Leão"
-    }
+    $scope.fotos = [];
+
+    $http.get('v1/fotos')
+    .success(function(fotos){
+        $scope.fotos = fotos;
+    })
+    .error(function(erro){
+        console.log(erro);
+    });
 
 });
