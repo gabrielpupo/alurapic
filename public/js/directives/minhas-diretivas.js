@@ -1,4 +1,5 @@
-angular.module('minhasDiretivas', []).directive('meuPainel', function(){
+angular.module('minhasDiretivas', [])
+.directive('meuPainel', function(){
 
     var ddo = {};
 
@@ -14,4 +15,21 @@ angular.module('minhasDiretivas', []).directive('meuPainel', function(){
 
     return ddo;
 
-})
+}).directive('minhaFoto', function(){
+
+    var ddo = {};
+
+    ddo.restrict = "AE";
+
+    ddo.transclude = true;
+
+    ddo.scope = {
+        titulo: '@',
+        url: '@' 
+    };
+
+    ddo.templateUrl = 'js/directives/minha-foto.html' ;
+
+    return ddo;
+
+});
