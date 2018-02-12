@@ -32,7 +32,7 @@
                 <select name="grupo" class="form-control" required 
                 ng-controller="GruposController" 
                 ng-model="foto.grupo"
-                ng-options="grupo._id as (grupo.nome | uppercase) for grupo in grupos">
+                ng-options="grupo._id as (grupo.nome | uppercase) for grupo in grupos | orderBy:'nome'">
                     <option value="">Selecione Grupo</option>
                 </select>
                 <span ng-show="formulario.$submitted && formulario.grupo.$error.required" class="form-control alert-danger">
