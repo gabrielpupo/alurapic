@@ -1,3 +1,3 @@
 "# alurapic" 
 
-repositorio da aplicação alurapic do curso de angularjs 1 da alura
+repositorio da aplicaÃ§Ã£o alurapic do curso de angularjs 1 da alura
