@@ -3,12 +3,12 @@ angular.module('alurapic').controller('FotosController', function($scope, recurs
     $scope.fotos = [];
     $scope.filtro = '';
     $scope.mensagem = '';
-    
-    // recursoFoto.query(function(fotos){
-    //     $scope.fotos = fotos;
-    // }, function(erro){
-    //     console.log(erro);
-    // });
+
+    recursoFoto.query(function(fotos){
+        $scope.fotos = fotos;
+    }, function(erro){
+        console.log(erro);
+    });
 
     $scope.remover = function(foto) {
         recursoFoto.delete({fotoId:foto._id}, function(){

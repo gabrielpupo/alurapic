@@ -1,4 +1,4 @@
-angular.module('alurapic').controller('FotoController', function($scope, recursoFoto, $routeParams) {
+angular.module('alurapic').controller('FotoController', function($scope, recursoFoto, cadastroDeFotos, $routeParams) {
 
     $scope.foto = {};
     $scope.mensagem = '';
@@ -14,25 +14,45 @@ angular.module('alurapic').controller('FotoController', function($scope, recurso
     $scope.submeter = function() {
 
         if ($scope.formulario.$valid) {
-            if($routeParams.fotoid) {
-                recursoFoto.update({fotoId : $routeParams.fotoid}, $scope.foto, function(){
-                    $scope.mensagem = 'A Foto ' + $scope.foto._id + ' Foi Alterada';
-                    $scope.formulario.$setPristine();
-                }), function(erro){
-                    console.log(erro);
-                }
-            } else {
-                recursoFoto.save($scope.foto, function(){
-                    $scope.foto = {};
-                    $scope.mensagem = 'Foto Incluida com Sucesso';
-                    $scope.formulario.$setPristine();
-                }), function(erro){
-                    $scope.mensagem = 'Não Foi Possível Incluir a Foto';
-                    console.log(erro);
-                }
-            }
+            
+            cadastroDeFotos.cadastrar($scope.foto)
+            .then(function(dados){
+                
+                console.log(dados.inclusao);
+
+                $scope.mensagem = dados.mensagem;                                
+                $scope.foto = {};
+                $scope.formulario.$setPristine();
+                
+            })    
+            .catch(function(dados){
+                $scope.mensagem = dados.mensagem;
+            });
         }
-    };    
+    };   
+
+    // $scope.submeter = function() {
+
+    //     if ($scope.formulario.$valid) {
+    //         if($routeParams.fotoid) {
+    //             recursoFoto.update({fotoId : $routeParams.fotoid}, $scope.foto, function(){
+    //                 $scope.mensagem = 'A Foto ' + $scope.foto._id + ' Foi Alterada';
+    //                 $scope.formulario.$setPristine();
+    //             }), function(erro){
+    //                 console.log(erro);
+    //             }
+    //         } else {
+    //             recursoFoto.save($scope.foto, function(){
+    //                 $scope.foto = {};
+    //                 $scope.mensagem = 'Foto Incluida com Sucesso';
+    //                 $scope.formulario.$setPristine();
+    //             }), function(erro){
+    //                 $scope.mensagem = 'Não Foi Possível Incluir a Foto';
+    //                 console.log(erro);
+    //             }
+    //         }
+    //     }
+    // };    
 
     // //Get sem utilizar $resource
     // if($routeParams.fotoid){
