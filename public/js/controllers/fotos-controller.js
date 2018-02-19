@@ -3,9 +3,16 @@ angular.module('alurapic').controller('FotosController', function($scope, recurs
     $scope.fotos = [];
     $scope.filtro = '';
     $scope.mensagem = '';
+    $scope.titulos = [];
 
     recursoFoto.query(function(fotos){
         $scope.fotos = fotos;
+    }, function(erro){
+        console.log(erro);
+    });
+
+    recursoFoto.query(function(titulos){
+        $scope.titulos = titulos;
     }, function(erro){
         console.log(erro);
     });
